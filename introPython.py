@@ -121,3 +121,19 @@ for i in range(5):
 
     for i in range(5): print(i)
 
+#exercicio 3
+
+idade = 18
+anoNascimento= "2024"
+
+txt = f"O Paulo tem {idade} anos, mas ele nasceu em {anoNascimento}"
+    
+print(txt)
+
+
+
+#type variaveis
+
+type = (int)
+    
+
