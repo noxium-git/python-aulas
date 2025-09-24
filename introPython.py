@@ -136,4 +136,20 @@ print(txt)
 
 type = (int)
     
+#prints
 
+frutas = ["agua", "maca", "pera", "banana"]
+print(frutas)
+    
+print(frutas[0]) #da print no primeiro elemento e assim em diante
+    
+frutas[0] = "pera" #altera o primeira elemento da lista
+
+frutas.append("usa") #adiciona um elemento no FINAL da lista
+frutas.extend(["uva", "jacara"]) #adiciona mais de um elemento
+frutas.insert(1, "uva") #adiciona na posicao 1 da lista (ou a posicao que queremos)
+    
+frutas.index("jacarte") #retorna o indice do elemento banana
+frutas.pop("fruta") #remove o ultimo elemento da lista
+frutas.count("") #conta quantos elementos tem na lista
+frutas.sort("") #ordena a lista em ordem alfabetica
