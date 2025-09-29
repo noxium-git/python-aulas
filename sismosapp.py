@@ -1,28 +1,26 @@
 import requests
 
-def buscar_dados(url):
-    resposta = requests.get(url)
-    if resposta.status_code == 200:
-        return resposta.json()
-    else:
-        print(f"Erro na ligacao. Código: {resposta.status_code}")
-        return None
-
-
-def mostrar_sismos(lista_sismos, limite=5):
-
-def filtrar_por_cidade(lista_sismos, cidade):
-    
-
 url = "https://api.ipma.pt/open-data/observation/seismic/3.json"
 
-dados = buscar_dados(url)
+resposta = requests.get(url)
 
-if dados:
+if resposta.status_code == 200:
+    dados = resposta.json()
 
-    cidade = input("Filtrar por cidade? (deixa em branco para todos): ").strip()
-    sismos_filtrados = filtrar_por_cidade(dados, cidade)
+    if 'data' in dados:
+        sismos = dados['data']
 
-    if sismos_filtrados:
-        mostrar_sismos(sismos_filtrados, limite=5)
-
+        print(f"Foram encontrados {len(sismos)} sismos nos últimos 3 dias.\n")
+        
+        for sismo in sismos[:5]:
+            print("------------------------------")
+            print("Data/Hora:", sismo.get('time', 'N/A'))
+            print("Local:", sismo.get('local', 'N/A'))
+            print("Latitude:", sismo.get('lat', 'N/A'))
+            print("Longitude:", sismo.get('lon', 'N/A'))
+            print("Magnitude:", sismo.get('mag', 'N/A'))
+            print("Profundidade:", sismo.get('depth', 'N/A'), "km")
+    else:
+        print("A chave 'data' não foi encontrada nos dados retornados.")
+else:
+    print("Erro na ligação. Código:", resposta.status_code)
