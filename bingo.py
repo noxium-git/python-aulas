@@ -13,4 +13,7 @@ numbers = []
 for i in range(8):
     number = random.randint(1,100)
     if number not in  numbers:
-        numbers.append(randomNumbers)
+        numbers.append(randomNumbers())
+numbers.sort()
+
+bingoCard = [[], [], []]
