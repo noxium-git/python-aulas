@@ -17,3 +17,5 @@ for i in range(8):
 numbers.sort()
 
 bingoCard = [[], [], []]
+
+print()
